@@ -16,13 +16,11 @@
 
   <header class="site-header">
     <a class="wordmark" href="/" aria-label="VCLV home">
-      <span class="wordmark-layer wordmark-c">VCLV</span>
-      <span class="wordmark-layer wordmark-m">VCLV</span>
-      <span class="wordmark-layer wordmark-y">VCLV</span>
       <span class="wordmark-base">VCLV</span>
     </a>
     <nav class="site-nav">
       <a href="/" {% if nav == "home" %}aria-current="page"{% endif %}>Studio</a>
+      <a href="/about/" {% if nav == "about" %}aria-current="page"{% endif %}>About</a>
       <a href="/projects/" {% if nav == "projects" %}aria-current="page"{% endif %}>Projects</a>
     </nav>
   </header>
