@@ -1,0 +1,14 @@
+---
+layout: base.njk
+nav: projects
+---
+<img class="project-hero" src="{{ hero }}" alt="">
+<div class="wrap">
+  <div class="project-header">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="project-body">
+    {{ content | safe }}
+  </div>
+  <a class="back-link" href="/projects/">← All projects</a>
+</div>

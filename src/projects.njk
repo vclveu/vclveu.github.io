@@ -1,0 +1,27 @@
+---
+layout: base.njk
+title: Projects
+nav: projects
+permalink: /projects/
+description: "Selected engineering, design, and manufacturing projects from VCLV."
+---
+<div class="wrap-wide">
+  <div class="page-head">
+    <h1>Projects</h1>
+    <p>Engineering, design, and manufacturing work — from robotic large-format printing to reverse-engineered glass grinding.</p>
+  </div>
+
+  <div class="project-grid">
+    {% for project in collections.projects %}
+    <a class="project-card" href="{{ project.url }}">
+      <div class="project-card-media">
+        <img src="{{ project.data.hero }}" alt="" loading="lazy">
+      </div>
+      <div class="project-card-body">
+        <p class="project-card-title">{{ project.data.title }}</p>
+        <p class="project-card-excerpt">{{ project.data.summary }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
