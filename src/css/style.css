@@ -11,23 +11,9 @@
   --ink: #14151a;
   --steel: #6b6e76;
   --line: #dcdcd8;
-
-  /* Prism spectrum — full dispersion, not a two-tone duotone */
-  --violet: #6a4fd6;
-  --blue: #2f74e0;
-  --cyan: #17aec2;
-  --green: #339e63;
-  --amber: #dda32e;
-  --coral: #e0603f;
-  --spectrum: linear-gradient(
-    90deg,
-    var(--violet),
-    var(--blue),
-    var(--cyan),
-    var(--green),
-    var(--amber),
-    var(--coral)
-  );
+  --cyan: #1fb6c9;
+  --magenta: #d63f95;
+  --amber: #e2a530;
 
   --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -95,26 +81,22 @@ img { max-width: 100%; display: block; }
   color: var(--ink);
 }
 .wordmark-layer {
-  /* Legacy markup safety net: if old layered spans are still present
-     anywhere, keep them invisible rather than stacking duplicate text. */
-  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
-.wordmark-base {
-  position: relative;
-  background-image: var(--spectrum);
-  background-size: 260% 100%;
-  background-position: 0% 0%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: var(--ink);
-  color: var(--ink);
-  transition: background-position 0.7s ease, -webkit-text-fill-color 0.3s ease 0.05s;
+.wordmark-base { position: relative; }
+.wordmark:hover .wordmark-c,
+.wordmark:hover .wordmark-m,
+.wordmark:hover .wordmark-y {
+  opacity: 0.75;
 }
-.wordmark:hover .wordmark-base,
-.wordmark:focus-visible .wordmark-base {
-  -webkit-text-fill-color: transparent;
-  background-position: 100% 0%;
-}
+.wordmark:hover .wordmark-c { color: var(--cyan); transform: translate(-1.5px, -1px); }
+.wordmark:hover .wordmark-m { color: var(--magenta); transform: translate(1.5px, 1px); }
+.wordmark:hover .wordmark-y { color: var(--amber); transform: translate(0.5px, -1.5px); }
 
 .site-nav {
   display: flex;
@@ -248,15 +230,14 @@ h2.block-title {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
-  justify-content: start;
-  gap: 1.25rem;
-  background: var(--paper);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
   margin: 2rem 0 4rem;
 }
 .project-card {
   background: var(--paper);
-  border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -288,7 +269,7 @@ h2.block-title {
   margin: 0 0 0.5rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid transparent;
-  background-image: var(--spectrum);
+  background-image: linear-gradient(90deg, var(--cyan), var(--magenta), var(--amber));
   background-size: 100% 2px;
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -407,7 +388,7 @@ h2.block-title {
 .project-body blockquote {
   margin: 0 0 1.5rem;
   padding-left: 1rem;
-  border-left: 2px solid var(--blue);
+  border-left: 2px solid var(--cyan);
   color: var(--steel);
 }
 .project-body hr {
@@ -420,7 +401,7 @@ h2.block-title {
   text-underline-offset: 3px;
 }
 .project-body a:hover {
-  text-decoration-color: var(--coral);
+  text-decoration-color: var(--magenta);
 }
 
 /* ---------------- Footer ---------------- */
